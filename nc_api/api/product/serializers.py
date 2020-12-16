@@ -1,4 +1,8 @@
 from rest_framework import serializers
+from .models import Product
 
-class ProductSerializers(serializers.HyperlinkedModelSerializer):
-    pass
+class ProductSerializer(serializers.HyperlinkedModelSerializer):
+    # image = serializers.ImageField(max_length=None, allow_empth_file=False, allow_null=True, required=False)
+    class Meta:
+        model = Product
+        fields = ('id','name','description','price','stock','is_active','image','category','created_at','updated_at')

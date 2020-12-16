@@ -15,4 +15,4 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.name} - {self.stock}"
+        return f"{self.name} - Stocks = {self.stock}"
