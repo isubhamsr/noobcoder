@@ -1,6 +1,7 @@
 import React from "react";
 import ImageHelper from "./helper/ImageHelper";
 import { Redirect } from 'react-router-dom'
+import { addItemToCart } from './helper/cartHelper'
 
 const isAuthenticate = true
 
@@ -15,6 +16,7 @@ export default function Card({
 
   const addToCart = () =>{
       if (isAuthenticate){
+          addItemToCart(product, ()=>{})
           console.log("Added to cart");
         }else{
           console.log("Login Please!");
