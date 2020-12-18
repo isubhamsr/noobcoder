@@ -1,7 +1,7 @@
 import React from "react";
 import ImageHelper from "./helper/ImageHelper";
 import { Redirect } from 'react-router-dom'
-import { addItemToCart } from './helper/cartHelper'
+import { addItemToCart, removeItemFromCart } from './helper/cartHelper'
 
 const isAuthenticate = true
 
@@ -46,7 +46,7 @@ export default function Card({
       return(
           removeFromCart && (
             <button
-            onClick={() => {console.log("Remove from cart")}}
+            onClick={() => {removeItemFromCart(product.id)}}
             className="btn btn-block btn-outline-danger mt-2 mb-2"
           >
             Remove from Cart
