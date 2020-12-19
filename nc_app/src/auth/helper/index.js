@@ -3,7 +3,7 @@ import { cartEmpty } from '../../core/helper/cartHelper'
 
 export const signup = (user) =>{
     return fetch(`${API}user/`,{
-        method = "POST",
+        method : "POST",
         headers : {
             "Accept" : "application/json",
             "Content-Type" : "application/json"
@@ -24,7 +24,7 @@ export const signin = (user) =>{
     }
 
     return fetch(`${API}user/login/`,{
-        method = "POST",
+        method : "POST",
         body : formData
     })
     .then(responce =>{
