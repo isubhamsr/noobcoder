@@ -57,7 +57,7 @@ export const signout = (next) =>{
 
     if(typeof window !== undefined){
         localStorage.removeItem("jwt")
-        cartEmpty(()=>{ console.log("cart is empty") })
+        // cartEmpty(()=>{ console.log("cart is empty") })
 
         return fetch(`${API}user/logout/${userId}/`,{
             method : "GET"
