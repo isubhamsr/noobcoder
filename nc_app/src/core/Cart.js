@@ -19,7 +19,7 @@ export default function Cart() {
             key={index}
             product={products}
             removeFromCart={true}
-            addtocart={false}
+            addtoCart={false}
             reload={reload}
             setReload={setReload}
           />

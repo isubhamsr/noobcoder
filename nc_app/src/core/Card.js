@@ -8,7 +8,7 @@ const isAuthenticate = true;
 
 export default function Card({
   product,
-  addtocart = true,
+  addtoCart = true,
   removeFromCart = false,
   reload = undefined,
   setReload = (f) => f,
@@ -42,9 +42,9 @@ export default function Card({
     }
   };
 
-  const showAddToCartButton = (addtocart) => {
+  const showAddToCartButton = (addtoCart) => {
     return (
-      addtocart && (
+      addtoCart && (
         <button
           onClick={addToCart}
           className="btn btn-block btn-outline-success mt-2 mb-2"
@@ -83,7 +83,7 @@ export default function Card({
         </p>
         <p className="btn btn-success rounded btn-sm px-4">{cartPrice}</p>
         <div className="row">
-          <div className="col-12">{showAddToCartButton(addtocart)}</div>
+          <div className="col-12">{showAddToCartButton(addtoCart)}</div>
           <div className="col-12">
             {showRemoveFromCartButton(removeFromCart)}
           </div>
