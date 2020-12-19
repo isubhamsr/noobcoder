@@ -35,8 +35,17 @@ export default function Signin() {
       .then((data) => {
         console.log(data);
         if (data.token) {
-          const sessionToken = data.token;
-          authenticate(sessionToken, () => {
+          // const sessionToken = data.token;
+          const jwt = {
+            token: data.token,
+            user: {
+              id: data.user.id,
+              name: data.user.name,
+              email : data.user.email,
+              session_token : data.user.session_token
+            },
+          };
+          authenticate(jwt, () => {
             console.log("Token Added");
             setValues({
               ...values,
@@ -46,7 +55,7 @@ export default function Signin() {
         } else {
           setValues({
             ...values,
-            loading : false
+            loading: false,
           });
         }
       })
@@ -140,7 +149,7 @@ export default function Signin() {
 
   return (
     <Base title="Sign In page">
-    {loadingMessage()}
+      {loadingMessage()}
       {signInForm()}
       <p className="text-white text-center">{JSON.stringify(values)}</p>
       {performRedirect()}

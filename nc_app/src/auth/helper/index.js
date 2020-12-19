@@ -41,7 +41,7 @@ export const authenticate = (data, next) =>{
 }
 
 export const isAuthenticated = () =>{
-    if(typeof window !== undefined){
+    if(typeof window === undefined){
         return false
     }
     if(localStorage.getItem("jwt")){
@@ -63,8 +63,8 @@ export const signout = (next) =>{
             method : "GET"
         })
         .then(responce =>{
-            return responce.json()
             next()
+            return responce.json()
         })
         .catch( error => { return error.message })
     }

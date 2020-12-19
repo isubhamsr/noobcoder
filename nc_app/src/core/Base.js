@@ -1,4 +1,5 @@
 import React from "react";
+import Menu from "./Menu";
 
 export default function Base({
   title = "My Title",
@@ -8,6 +9,7 @@ export default function Base({
 }) {
   return (
     <div>
+    <Menu />
       <div className="container-fluid">
         <div className="jumbotron bg-dark text-white text-center">
           <h2 className="display-4">{title}</h2>
