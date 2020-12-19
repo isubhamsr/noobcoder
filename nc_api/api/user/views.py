@@ -43,7 +43,7 @@ def signin(request):
             user.session_token = token
             user.save()
             login(request, user)
-            return JsonResponse({'error' : False, 'message' : 'User Login Succesfully', token : token, 'user' : user_dic})
+            return JsonResponse({'error' : False, 'message' : 'User Login Succesfully', "token" : token, 'user' : user_dic})
 
         else:
             return JsonResponse({"error" : True, "message" : "Invalid Password"})

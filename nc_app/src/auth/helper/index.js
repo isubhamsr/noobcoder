@@ -46,6 +46,7 @@ export const isAuthenticated = () =>{
     }
     if(localStorage.getItem("jwt")){
         return JSON.parse(localStorage.getItem("jwt"))
+        // TODO - compare jwt (localStorage vallue) with the database session storage value
     }else{
         return false
     }
