@@ -51,7 +51,7 @@ export default function Signup() {
                  <div 
                     className="alert alert-success" 
                     style={{ display: success ? "" : "none" }}>
-                     New Account Created successfully, Please Login now
+                     New Account Created successfully, Please <Link to="/signin"> Login now </Link>
                  </div>
             </div>
         </div>
@@ -121,9 +121,9 @@ export default function Signup() {
     {successMessage()}
     {errorMessage()}
       {signUpForm()}
-      <p className="text-white text-center">
+      {/* <p className="text-white text-center">
         {JSON.stringify(values)}
-      </p>
+      </p> */}
     </Base>
   );
 }
