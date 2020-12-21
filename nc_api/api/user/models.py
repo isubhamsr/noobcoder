@@ -13,3 +13,6 @@ class CustomUser(AbstractUser):
     session_token = models.CharField(max_length=255, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.email} - {self.id}"

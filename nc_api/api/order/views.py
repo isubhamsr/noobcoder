@@ -18,11 +18,14 @@ def validate_user_seassion(id, token):
     except UserModel.DoesNotExist:
         return False
 
+@csrf_exempt
 def add_order(request, id, token):
     if not validate_user_seassion(id, token):
         return JsonResponse({"error": True, "message" : "You need to login"})
     
     if request.method == "POST":
+        print(id)
+        print(token)
         user_id = id
         transaction_id = request.POST['transaction_id']
         product_names = request.POST['product_names']

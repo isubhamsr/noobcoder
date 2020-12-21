@@ -9,9 +9,9 @@ from django.views.decorators.csrf import csrf_exempt
 gateway = braintree.BraintreeGateway(
     braintree.Configuration(
         environment=braintree.Environment.Sandbox,
-        merchant_id='t79v5wmvkc5kf9rb',
-        public_key='rwy5t4b3ghkv74ws',
-        private_key='36f25650ce1ee57f29f76f93c9d1cbd6'
+        merchant_id="t79v5wmvkc5kf9rb",
+        public_key="rwy5t4b3ghkv74ws",
+        private_key="36f25650ce1ee57f29f76f93c9d1cbd6"
     )
 )
 
@@ -30,13 +30,14 @@ def validate_user_seassion(id, token):
 
 @csrf_exempt
 def genarate_token(request, id, token):
+    print(type(id))
     if not validate_user_seassion(id, token):
         return JsonResponse({'error':  True, 'message': 'Invalid seassion, Please Login!'})
 
-    client_token = gateway.client_token.generate({
-        "customer_id": id
-    })
-    return JsonResponse({'error': False, 'clientToken': client_token})
+    # client_token = gateway.client_token.generate({
+    #     "customer_id": id
+    # })
+    return JsonResponse({'error': False, 'clientToken': gateway.client_token.generate()})
 
 
 @csrf_exempt
@@ -57,6 +58,6 @@ def process_payment(request, id, token):
     })
 
     if result.is_success:
-        return JsonResponse({'error':  False, 'message': 'Transaction Successfull', 'transaction': {'amount': result.transaction.amount}})
+        return JsonResponse({'success':  result.is_success, 'message': 'Transaction Successfull', 'transaction': {'id' : result.transaction.id,'amount': result.transaction.amount}})
     else:
-        return JsonResponse({'error' : True, 'message' : 'Transaction not Successfull'})
+        return JsonResponse({'error': True, 'message': 'Transaction not Successfull'})

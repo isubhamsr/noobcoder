@@ -6,6 +6,6 @@ router = routers.DefaultRouter()
 router.register(r'', views.OrderViewSet)
 
 urlpatterns = [
-    path('add/<str:id>/<str:token>', views.add_order, name='order.add'),
+    path('add/<str:id>/<str:token>/', views.add_order, name='order.add'),
     path('', include(router.urls)),
 ]
